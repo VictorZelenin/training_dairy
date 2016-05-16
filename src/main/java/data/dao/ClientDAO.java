@@ -2,7 +2,7 @@ package data.dao;
 
 import data.data_sets.Client;
 import data.enums.Gender;
-import executor.Executor;
+import database_service.executor.Executor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,9 +17,8 @@ public class ClientDAO extends DAO<Client> {
 
     private static final String SELECT_ALL = "select * from client";
     private static final String SELECT_BY_ID = "select * from client where id = ";
-    private static final String INSERT = "insert into client(`name`, `login`, `password`, `gender`, " +
-            "`age`, `weight` ) values(?, ?, ?, ?, ?, ?)";
-
+    private static final String INSERT = "INSERT INTO client(`name`, `login`, `password`, `gender`, " +
+            "`age`, `weight` ) VALUES(?, ?, ?, ?, ?, ?)";
     private static final String DELETE_BY_ID = "delete from client where id = ";
     private static final String DELETE_ALL = "delete from client";
 

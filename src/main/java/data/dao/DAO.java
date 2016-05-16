@@ -26,8 +26,4 @@ public abstract class DAO<T> {
 
     public abstract int deleteAll();
 
-    public Connection getConnection() {
-        return connection;
-    }
-
 }

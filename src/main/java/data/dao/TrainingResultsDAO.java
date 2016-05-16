@@ -1,9 +1,7 @@
 package data.dao;
 
-import data.data_sets.Client;
-import data.data_sets.Exercise;
 import data.data_sets.TrainingsResult;
-import executor.Executor;
+import database_service.executor.Executor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

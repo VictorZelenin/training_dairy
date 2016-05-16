@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="624.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrationSceneController">
+    <children>
+        <TextField layoutX="216.0" layoutY="122.0" />
+        <TextField layoutX="216.0" layoutY="171.0" />
+        <TextField layoutX="213.0" layoutY="293.0" />
+        <TextField layoutX="212.0" layoutY="360.0" />
+        <TextField layoutX="197.0" layoutY="413.0" />
+        <TextField layoutX="212.0" layoutY="226.0" />
+        <Label layoutX="67.0" layoutY="128.0" text="Label" />
+        <Label layoutX="77.0" layoutY="231.0" text="Label" />
+        <Label layoutX="80.0" layoutY="295.0" text="Label" />
+        <Label layoutX="79.0" layoutY="361.0" text="Label" />
+        <Label layoutX="78.0" layoutY="418.0" prefHeight="0.0" prefWidth="36.0" text="Label" />
+        <Label layoutX="73.0" layoutY="179.0" text="Label" />
+        <RadioButton fx:id="rb1" layoutX="436.0" layoutY="391.0" mnemonicParsing="false" text="RadioButton">
+            <toggleGroup>
+                <ToggleGroup fx:id="gender" />
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="rb2" layoutX="435.0" layoutY="361.0" mnemonicParsing="false" text="RadioButton" toggleGroup="$gender" />
+        <Button layoutX="489.0" layoutY="515.0" mnemonicParsing="false" text="Button" />
+
+    </children>
+</AnchorPane>

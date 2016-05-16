@@ -1,8 +1,7 @@
 package data.dao;
 
-import data.data_sets.Client;
 import data.data_sets.Training;
-import executor.Executor;
+import database_service.executor.Executor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,11 +20,9 @@ public class TrainingDAO extends DAO<Training> {
     private static final String DELETE_BY_ID = "delete from training where id = ";
     private static final String DELETE_ALL = "delete from training";
 
-
     public TrainingDAO(Connection connection) {
         super(connection);
     }
-
 
     @Override
     public Training get(long id) {
