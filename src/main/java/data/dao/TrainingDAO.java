@@ -1,6 +1,7 @@
 package data.dao;
 
 import data.data_sets.Training;
+import database_service.database.Database;
 import database_service.executor.Executor;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ public class TrainingDAO extends DAO<Training> {
 
     private static final String SELECT_ALL = "select * from training";
     private static final String SELECT_BY_ID = "select * from training where id = ";
-    private static final String INSERT = "insert into training(`training_name`, `client_id`) values(?, ?)";
+    private static final String INSERT = "insert into training(`training_name`) values(?)";
     private static final String DELETE_BY_ID = "delete from training where id = ";
     private static final String DELETE_ALL = "delete from training";
 
@@ -30,8 +31,20 @@ public class TrainingDAO extends DAO<Training> {
 
         return Executor.executeQuery(connection, SELECT_BY_ID + id, result -> {
             result.next();
-            return new Training(result.getLong("id"), result.getString("training_name"),
-                    client.get(result.getLong("client_id")));
+            return new Training(result.getLong("id"), result.getString("training_name"));
+        });
+    }
+
+    public Training getByName(String name) {
+
+        StringBuilder query = new StringBuilder();
+        query.append("select * from training where training_name = '")
+                .append(name)
+                .append("'");
+
+        return Executor.executeQuery(connection, query.toString(), result -> {
+            result.next();
+            return new Training(result.getLong(1), result.getString(2));
         });
     }
 
@@ -43,8 +56,7 @@ public class TrainingDAO extends DAO<Training> {
         Executor.executeQuery(connection, SELECT_ALL, resultSet -> {
 
             while (resultSet.next()) {
-                trainings.add(new Training(resultSet.getLong("id"), resultSet.getString("training_name"),
-                        client.get(resultSet.getLong("client_id"))));
+                trainings.add(new Training(resultSet.getLong("id"), resultSet.getString("training_name")));
             }
 
             return trainings;
@@ -60,7 +72,6 @@ public class TrainingDAO extends DAO<Training> {
         try (PreparedStatement statement = connection.prepareStatement(INSERT)) {
 
             statement.setString(1, object.getTrainingName());
-            statement.setLong(2, object.getClient().getId());
 
             statement.execute();
 

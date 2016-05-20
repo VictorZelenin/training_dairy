@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="554.0"
+            prefWidth="626.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.scenes.MainSceneController">
+    <children>
+        <SplitPane fx:id="splitPane" dividerPositions="0.29797979797979796" prefHeight="554.0" prefWidth="626.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Separator layoutX="-3.0" layoutY="101.0" prefHeight="7.0" prefWidth="182.0"/>
+                        <Button onAction="#showTrainings" layoutX="4.0" layoutY="204.0" mnemonicParsing="false"
+                                prefHeight="56.0"
+                                prefWidth="176.0" text="Тренування"/>
+                        <Button onAction="#showResults" layoutX="4.0" layoutY="299.0" mnemonicParsing="false" prefHeight="56.0"
+                                prefWidth="176.0" text="Результати"/>
+                        <Button layoutX="3.0" layoutY="104.0" mnemonicParsing="false" prefHeight="56.0"
+                                prefWidth="176.0" text="Персональні дані"
+                                onAction="#showPersonalData"/>
+                        <Button layoutX="2.0" layoutY="492.0" mnemonicParsing="false" prefHeight="56.0"
+                                prefWidth="176.0" text="Вихід" onAction="#exit"/>
+                        <Button onAction="#showStatistics" layoutX="-2.0" layoutY="396.0" mnemonicParsing="false" prefHeight="56.0"
+                                prefWidth="182.0" text="Статистика"/>
+                        <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="-12.0" layoutY="5.0">
+                            <image>
+                                <Image url="@/0_d6c40_44ef4f58_orig.jpg"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="dynamicPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Label layoutX="39.0" layoutY="65.0" text="Вас вітає персональнй помічник для тренувань."/>
+                        <Label layoutX="16.0" layoutY="125.0" text="Найпопулярніші тренування :"/>
+                        <ListView fx:id="listView" layoutX="-5.0" layoutY="159.0" prefHeight="396.0" prefWidth="442.0"/>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

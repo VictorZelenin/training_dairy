@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.windows.additional_windows.ResultController">
+   <children>
+      <Label layoutX="171.0" layoutY="48.0" text="Додайте новий результат :" />
+      <Separator layoutY="92.0" prefHeight="2.0" prefWidth="523.0" />
+      <DatePicker fx:id="date" layoutX="263.0" layoutY="119.0" />
+      <Label layoutX="64.0" layoutY="124.0" text="Дата тренування" />
+      <ChoiceBox fx:id="exercises" layoutX="265.0" layoutY="179.0" prefWidth="150.0" />
+      <Label layoutX="63.0" layoutY="182.0" text="Вправа" />
+      <TextField fx:id="approaches" layoutX="265.0" layoutY="248.0" />
+      <Label layoutX="64.0" layoutY="250.0" text="Кількість підходів" />
+      <Label layoutX="64.0" layoutY="310.0" text="Кількість повторень" />
+      <TextField fx:id="repetitions" layoutX="265.0" layoutY="308.0" />
+      <Label layoutX="64.0" layoutY="366.0" text="Очікуєма вага" />
+      <TextField fx:id="expectedWeight" layoutX="265.0" layoutY="364.0"  />
+      <Label layoutX="63.0" layoutY="427.0" text="Реальна вага" />
+      <TextField fx:id="realWeight" layoutX="264.0" layoutY="425.0" />
+      <Separator layoutY="477.0" prefHeight="3.0" prefWidth="523.0" />
+      <Button  onAction="#addNewResult" layoutX="430.0" layoutY="497.0" mnemonicParsing="false" text="Додати" />
+      <Button layoutX="25.0" layoutY="496.0" mnemonicParsing="false" onAction="#close" text="Закрити" />
+   </children>
+</AnchorPane>

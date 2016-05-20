@@ -47,6 +47,7 @@ public class ExercisesInTrainingDAO {
 
                 updated += statement.getUpdateCount();
 
+
             } catch (SQLException e) {
                 System.err.println("Can not add exercise: " + exercise);
                 e.printStackTrace();

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0"
+            prefWidth="626.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.scenes.ResultsSceneController">
+    <children>
+        <SplitPane dividerPositions="0.29797979797979796" prefHeight="554.0" prefWidth="626.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Separator layoutX="-3.0" layoutY="101.0" prefHeight="7.0" prefWidth="182.0"/>
+                        <Button layoutX="4.0" layoutY="204.0" mnemonicParsing="false" onAction="#showTrainings"
+                                prefHeight="56.0" prefWidth="176.0" text="Тренування"/>
+                        <Button layoutX="4.0" layoutY="299.0" mnemonicParsing="false" prefHeight="56.0"
+                                prefWidth="176.0" text="Результати"/>
+                        <Button layoutX="3.0" layoutY="104.0" mnemonicParsing="false" onAction="#showPersonalData"
+                                prefHeight="56.0" prefWidth="176.0" text="Персональні дані"/>
+                        <Button layoutX="2.0" layoutY="492.0" mnemonicParsing="false" onAction="#exit" prefHeight="56.0"
+                                prefWidth="176.0" text="Вихід"/>
+                        <Button onAction="#showStatistics" layoutX="-2.0" layoutY="396.0" mnemonicParsing="false" prefHeight="56.0"
+                                prefWidth="182.0" text="Статистика"/>
+                        <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="-12.0" layoutY="5.0">
+                            <image>
+                                <Image url="@/0_d6c40_44ef4f58_orig.jpg"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="490.0">
+                    <children>
+                        <TableView fx:id="tableView" layoutY="50.0" prefHeight="439.0" prefWidth="516.0">
+                            <columns>
+                                <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Дата"/>
+                                <TableColumn fx:id="exerciseColumn" prefWidth="105.0" text="Вправа"/>
+                                <TableColumn fx:id="approachesColumn" prefWidth="71.0" text="Підходи"/>
+                                <TableColumn fx:id="repetitionsColumn" prefWidth="65.0" text="Повторення"/>
+                                <TableColumn fx:id="realWeightColumn" prefWidth="89.0" text="Робоча вага"/>
+                            </columns>
+                        </TableView>
+                        <Button onAction="#addNewResult" layoutX="319.0" layoutY="505.0" mnemonicParsing="false"
+                                text="Додати"/>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

@@ -1,9 +1,13 @@
 package data.dao;
 
+import data.data_sets.Client;
+import data.data_sets.Training;
 import data.data_sets.TrainingsResult;
+import database_service.database.Database;
 import database_service.executor.Executor;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ public class TrainingResultsDAO extends DAO<TrainingsResult> {
     private static final String INSERT = "insert into result(`date`, `client_id`, `exercise_id`, " +
             "`approaches`, `repeatings`, `expected_training_weight`, `real_training_weight`) " +
             "values(?, ?, ?, ?, ?, ?, ?)";
+    private static final String SELECT_BY_CLIENT = "select * from result where client_id = ";
 
     private static final String DELETE_BY_ID = "delete from exercise where id = ";
     private static final String DELETE_ALL = "delete from exercise";
@@ -42,6 +47,41 @@ public class TrainingResultsDAO extends DAO<TrainingsResult> {
                     exercise.get(result.getLong(4)), result.getInt(5), result.getInt(6),
                     result.getInt(7), result.getInt(8));
         });
+    }
+
+    public List<TrainingsResult> getList(long id) {
+        List<TrainingsResult> results = new ArrayList<>();
+
+        ClientDAO client = new ClientDAO(connection);
+        ExerciseDAO exercise = new ExerciseDAO(connection);
+        System.out.println(id);
+        return Executor.executeQuery(connection, SELECT_BY_CLIENT + id, result -> {
+            while (result.next()) {
+                System.out.println(result.getLong(1));
+                results.add(new TrainingsResult(result.getLong(1), result.getDate(2), client.get(result.getLong(3)),
+                        exercise.get(result.getLong(4)), result.getInt(5), result.getInt(6),
+                        result.getInt(7), result.getInt(8)));
+            }
+            return results;
+        });
+    }
+
+    public List<TrainingsResult> getByClient(Client client) {
+        List<TrainingsResult> results = new ArrayList<>();
+        ClientDAO clientDAO = new ClientDAO(connection);
+        ExerciseDAO exercise = new ExerciseDAO(connection);
+
+        return Executor.executeQuery(connection, SELECT_BY_CLIENT + client.getId(),
+                result -> {
+                    while (result.next()) {
+                        new TrainingsResult(result.getLong(1), result.getDate(2),
+                                clientDAO.get(result.getLong(3)),
+                                exercise.get(result.getLong(4)), result.getInt(5), result.getInt(6),
+                                result.getInt(7), result.getInt(8));
+                    }
+                    return results;
+
+                });
     }
 
     @Override
@@ -88,7 +128,6 @@ public class TrainingResultsDAO extends DAO<TrainingsResult> {
             e.printStackTrace();
         }
 
-
         return updated;
     }
 
@@ -100,5 +139,14 @@ public class TrainingResultsDAO extends DAO<TrainingsResult> {
     @Override
     public int deleteAll() {
         return Executor.executeUpdate(connection, DELETE_ALL);
+    }
+
+
+    public static void main(String[] args) {
+        Database database = Database.getInstance();
+
+        TrainingResultsDAO dao = new TrainingResultsDAO(database.getConnection());
+
+        System.out.println(dao.getList(15));
     }
 }

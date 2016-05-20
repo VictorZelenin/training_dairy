@@ -10,22 +10,18 @@ public class Training {
     private long id;
     private String trainingName;
 
-    private Client client;
 
     public Training() {
-
     }
 
-    public Training(String trainingName, Client client) {
+    public Training(String trainingName) {
         id = ++ID;
         this.trainingName = trainingName;
-        this.client = client;
     }
 
-    public Training(long id, String trainingName, Client client) {
+    public Training(long id, String trainingName) {
         this.id = id;
         this.trainingName = trainingName;
-        this.client = client;
     }
 
     public long getId() {
@@ -44,13 +40,6 @@ public class Training {
         this.trainingName = trainingName;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -60,9 +49,7 @@ public class Training {
         Training training = (Training) o;
 
         if (id != training.id) return false;
-        if (trainingName != null ? !trainingName.equals(training.trainingName) : training.trainingName != null)
-            return false;
-        return client != null ? client.equals(training.client) : training.client == null;
+        return trainingName != null ? trainingName.equals(training.trainingName) : training.trainingName == null;
 
     }
 
@@ -70,7 +57,6 @@ public class Training {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (trainingName != null ? trainingName.hashCode() : 0);
-        result = 31 * result + (client != null ? client.hashCode() : 0);
         return result;
     }
 
@@ -79,7 +65,6 @@ public class Training {
         return "Training{" +
                 "id=" + id +
                 ", trainingName='" + trainingName + '\'' +
-                ", client=" + client +
                 '}';
     }
 }

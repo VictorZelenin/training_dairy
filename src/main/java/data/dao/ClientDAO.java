@@ -22,7 +22,6 @@ public class ClientDAO extends DAO<Client> {
     private static final String DELETE_BY_ID = "delete from client where id = ";
     private static final String DELETE_ALL = "delete from client";
 
-
     public ClientDAO(Connection connection) {
         super(connection);
     }
@@ -87,6 +86,24 @@ public class ClientDAO extends DAO<Client> {
 
 
         return updated;
+    }
+
+    public int updateClientInfo(Client client) {
+        StringBuilder updateQuery = new StringBuilder();
+
+        updateQuery.append("update client set name = '")
+                .append(client.getName())
+                .append("', login = '")
+                .append(client.getLogin())
+                .append("', age = ")
+                .append(client.getAge())
+                .append(", weight = ")
+                .append(client.getWeight())
+                .append(" where id = ")
+                .append(client.getId());
+
+
+        return Executor.executeUpdate(connection, updateQuery.toString());
     }
 
     private String getGender(Gender gender) {
